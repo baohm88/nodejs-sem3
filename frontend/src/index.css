@@ -1,0 +1,293 @@
+.text-truncate-container {
+    max-height: 4.5rem; /* Adjust this value to control the number of visible rows */
+    overflow: hidden;
+    position: relative;
+}
+
+.text-truncate {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Adjust this value to control the number of visible lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.custom-toggler {
+    border-color: red;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='red' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.search-form {
+    width: 50%;
+}
+
+.wide-dropdown-menu {
+    min-width: 300px; /* Adjust the width as needed */
+}
+
+/* listings */
+/* Responsive Car Card */
+
+.car-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+/* Hover effect */
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+.badge {
+    font-size: 0.8rem;
+    padding: 0.4em 0.6em;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* IMAGES SECTION */
+
+/* CarImagesSection.css */
+.car-image-section {
+    max-height: 500px; /* Prevent tall stretching on XL screens */
+    height: 100%;
+}
+
+.main-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-image-container {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Thumbnail column styling */
+.thumbnail-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Thumbnails now rectangular (landscape) */
+.thumbnail-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+.thumbnail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* +X overlay button */
+.overlay-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-thumbnail-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 5px;
+}
+
+.mobile-thumbnail-container {
+    flex: 0 0 auto;
+    width: 120px;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+.mobile-thumbnail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* SCROLL BUTTON */
+
+/* Animation for scroll-to-top button */
+.scroll-top-btn {
+    transform: translateY(100px); /* hidden position */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0); /* slide up into view */
+}
+
+/* QA SECTION */
+.qa-card {
+    width: calc(100% / 2.5);
+    min-width: calc(100% / 2.5);
+    scroll-snap-align: start;
+}
+
+@media (max-width: 991px) {
+    .qa-card {
+        width: calc(100% / 1.5);
+        min-width: calc(100% / 1.5);
+    }
+}
+
+@media (max-width: 767px) {
+    .qa-card {
+        width: calc(100% / 1.25);
+        min-width: calc(100% / 1.25);
+    }
+}
+
+/* Optional styling for sidebar collapse */
+.sidebar-collapsed {
+    overflow-x: hidden;
+}
+
+.nav-link.active {
+    font-weight: bold;
+}
+
+.select-wrapper:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+/* ADMIN LAYOUT */
+.sidebar-wrapper {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar-wrapper.mobile {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    z-index: 1040;
+    width: 220px;
+    background: white;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
+    transition: left 0.3s ease;
+}
+
+.sidebar-wrapper.mobile.show {
+    left: 0;
+}
+
+.admin-sidebar {
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1039;
+}
+
+/* FEATURED CAROUSEL */
+
+.featured-carousel {
+    position: relative;
+}
+
+.chevron-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: white;
+    border-radius: 50%;
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.chevron-button.left {
+    left: 10px;
+}
+
+.chevron-button.right {
+    right: 10px;
+}
+
+
+/* MOBILE SIDEBAR */
+
+.active-link {
+    color: red !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #dc3545 !important; /* Bootstrap's red */
+}
+
+/* Heart Icon */
+.bi-heart-fill:hover {
+    opacity: 0.7;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 0.4s ease;
+}

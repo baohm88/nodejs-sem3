@@ -1,0 +1,172 @@
+.page-bg {
+    background-color: #1e1e1e; /* Nền tối */
+    min-height: 100vh;
+    color: #fff;
+}
+
+/* Style cho modal toàn màn hình */
+.fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    cursor: zoom-out;
+}
+
+.fullscreen-image {
+    max-width: 90%;
+    max-height: 90%;
+    cursor: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Overlay cho thumbnail thứ 8 nếu có ảnh ẩn */
+.overlay-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+/* Car.css */
+
+/* Áp dụng font chữ và màu chữ chung cho toàn bộ nội dung của component */
+.page-bg,
+.page-bg * {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #f8f9fa !important;  /* Màu chữ sáng, bạn có thể thay đổi nếu cần */
+}
+
+/* Căn chỉnh lại màu cho các tiêu đề */
+h1, h3, h5 {
+    color: #f8f9fa;
+}
+
+/* Đảm bảo các button và các thành phần khác kế thừa font và màu */
+.btn,
+.card,
+.card-body,
+.table,
+a {
+    font-family: inherit;
+    color: inherit;
+}
+
+/* Nếu cần, bạn có thể đặt background cho toàn bộ component (ví dụ: nền tối) */
+.page-bg {
+    background-color: #000; /* nền đen */
+}
+/* Loại bỏ viền card, nền đen hơi nhạt */
+.card.bg-dark.border-secondary {
+    border: none !important;
+    background-color: #1a1a1a !important;
+}
+
+/* Card body với khoảng cách vừa phải */
+.card.bg-dark .card-body {
+    padding: 1.5rem !important;
+}
+
+/* Tiêu đề xe (ví dụ: "2022 Porsche Taycan GTS - Reserve") */
+.card.bg-dark .card-body h5.fw-bold {
+    color: #f8f9fa; /* Màu chữ trắng */
+    font-size: 1.25rem; /* Tùy chỉnh cỡ chữ */
+    margin-bottom: 1.5rem;
+}
+
+/* Dòng “Current Bid” */
+.current-bid-label {
+    color: #999;        /* Màu ghi nhạt cho label */
+    font-size: 0.875rem; /* Cỡ chữ nhỏ hơn */
+    margin-right: 0.5rem;
+}
+
+/* Giá bid to và nổi bật */
+.big-price {
+    font-size: 2.5rem;    /* Chữ to */
+    font-weight: 700;     /* Đậm */
+    margin-bottom: 1rem;
+    color: #4dd59e;       /* Màu xanh lá nhẹ (tùy chỉnh) */
+}
+
+/* Nút Place Bid */
+.btn.btn-success {
+    background-color: #2bc28c;
+    border: none;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+}
+
+.btn.btn-success:hover {
+    background-color: #28b283;
+}
+
+/* Liên kết bên dưới Bid */
+a.text-decoration-none {
+    color: #ccc; /* Màu ghi */
+    font-size: 0.9rem;
+    margin-right: 1rem;
+}
+
+a.text-decoration-none:hover {
+    color: #fff;
+}
+
+/* Phần Seller / Ending / Bids / Views ở cột phải */
+.seller-label {
+    color: #bbb;
+    margin-right: 0.5rem;
+}
+
+.seller-name {
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.btn.btn-sm.btn-outline-light {
+    border-color: #999;
+    color: #ddd;
+}
+
+.btn.btn-sm.btn-outline-light:hover {
+    border-color: #ccc;
+    color: #fff;
+}
+
+/* Dòng text-muted (vd: "Ending:", "Bids:", "Views:") */
+.text-muted {
+    color: #aaa !important;
+    font-size: 0.875rem;
+}
+
+/* Con số in đậm (vd: 12 bids, 9,645 views) */
+.bid-number, .view-number, .ending-strong {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+}
+
