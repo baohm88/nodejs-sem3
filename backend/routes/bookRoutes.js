@@ -7,11 +7,13 @@ const {
     getBook,
     deleteBook,
     updateBook,
+    getStoreCodes,
 } = require("../controllers/bookController");
 
 const router = express.Router();
 
 router.get("/", getBooks);
+router.get("/stores", getStoreCodes);
 router.post(
     "/",
     isAuth,

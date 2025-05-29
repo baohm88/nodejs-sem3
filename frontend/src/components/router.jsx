@@ -21,7 +21,7 @@ export const AppRouter = createBrowserRouter([
             { path: "/register", element: <Register /> },
             { path: "/login", element: <Login /> },
             {
-                path: "/add-car",
+                path: "/add-book",
                 element: (
                     <ProtectedRoute>
                         <AddBook />

@@ -23,27 +23,16 @@ export default function MobileSidebar({
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title className="d-flex align-items-center justify-content-between w-100">
                         <img
-                            src="/logo-autobid.svg"
-                            alt="AutoBid"
+                            src="/Node.js_logo.svg"
+                            alt="Nodejs Book Store"
                             height={50}
                         />
                     </Offcanvas.Title>
                 </Offcanvas.Header>
 
                 <Offcanvas.Body>
-                    {/* Mobile search bar */}
-                    <Form className="d-flex mb-3" onKeyPress={handleKeyPress}>
-                        <FormControl
-                            type="search"
-                            placeholder="Search for cars..."
-                            className="me-2"
-                            value={searchTerm}
-                            onChange={handleSearchChange}
-                        />
-                    </Form>
-
                     <Nav className="flex-column">
-                        <Nav.Link as={NavLink} to="/add-car" onClick={onHide}>
+                        <Nav.Link as={NavLink} to="/add-book" onClick={onHide}>
                             <Button
                                 variant="danger"
                                 size="sm"

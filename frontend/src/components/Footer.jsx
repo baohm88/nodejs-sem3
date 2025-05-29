@@ -12,7 +12,7 @@ export default function Footer() {
                     to="/"
                     className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
                 >
-                    <img src="/logo-autobid.svg" alt="auto bid" height={40} />
+                    <img src="/Node.js_logo.svg" alt="Nodejs Book Store" height={40} />
                 </NavLink>
 
                 <ul className="nav col-md-4 justify-content-end">

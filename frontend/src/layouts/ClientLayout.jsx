@@ -3,12 +3,10 @@ import {
     Nav,
     Container,
     Button,
-    Form,
-    FormControl,
     NavDropdown,
     Image,
 } from "react-bootstrap";
-import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { Outlet, NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { RiMenu2Line } from "react-icons/ri";
 import { useAuth } from "../context/AuthContext";
@@ -23,16 +21,8 @@ export default function ClientLayout() {
     const { user, isAuthenticated } = useAuth();
     const logOut = useLogOut();
     const location = useLocation();
-    const navigate = useNavigate();
-    const [searchTerm, setSearchTerm] = useState("");
-    const [showSidebar, setShowSidebar] = useState(false);
 
-    const handleSearchChange = (e) => setSearchTerm(e.target.value);
-    const handleKeyPress = (e) => {
-        if (e.key === "Enter" && searchTerm.trim() !== "") {
-            navigate("/");
-        }
-    };
+    const [showSidebar, setShowSidebar] = useState(false);
 
     const toggleSidebar = () => setShowSidebar((prev) => !prev);
 
@@ -62,12 +52,12 @@ export default function ClientLayout() {
                                         className="d-none d-md-block"
                                     >
                                         <img
-                                            src="/logo-autobid.svg"
-                                            alt="AutoBid"
+                                            src="/Node.js_logo.svg"
+                                            alt="Nodejs Book Store"
                                             height={50}
                                         />
                                     </Navbar.Brand>
-                                    <Nav.Link as={NavLink} to="/add-car">
+                                    <Nav.Link as={NavLink} to="/add-book">
                                         <Button
                                             variant="danger"
                                             size="sm"
@@ -85,25 +75,11 @@ export default function ClientLayout() {
                                     className="mx-auto d-md-none"
                                 >
                                     <img
-                                        src="/logo-autobid.svg"
-                                        alt="AutoBid"
+                                        src="/Node.js_logo.svg"
+                                        alt="Nodejs Book Store"
                                         height={30}
                                     />
                                 </Navbar.Brand>
-
-                                {/* Search bar (hidden on small) */}
-                                <Form
-                                    className="d-none d-md-flex w-50 mx-auto"
-                                    onKeyPress={handleKeyPress}
-                                >
-                                    <FormControl
-                                        type="search"
-                                        placeholder="Search for Nodejs books..."
-                                        className="me-2"
-                                        value={searchTerm}
-                                        onChange={handleSearchChange}
-                                    />
-                                </Form>
 
                                 {/* User controls */}
                                 {isAuthenticated ? (
@@ -153,16 +129,13 @@ export default function ClientLayout() {
                         <MobileSidebar
                             show={showSidebar}
                             onHide={toggleSidebar}
-                            searchTerm={searchTerm}
-                            handleSearchChange={handleSearchChange}
-                            handleKeyPress={handleKeyPress}
                             isAuthenticated={isAuthenticated}
                             logOut={logOut}
                         />
                     </header>
 
                     <main className="mt-3">
-                        <Outlet context={{ searchTerm }} />
+                        <Outlet />
                     </main>
 
                     <ScrollTopButton />

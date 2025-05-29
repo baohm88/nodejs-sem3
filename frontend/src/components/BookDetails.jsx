@@ -198,15 +198,6 @@ export default function BookDetails() {
                                                 )}
                                             </Card.Subtitle>
                                         </div>
-                                        {isBookOwner && (
-                                            <Button
-                                                variant="outline-primary"
-                                                size="sm"
-                                                onClick={handleEdit}
-                                            >
-                                                Edit Book
-                                            </Button>
-                                        )}
                                     </div>
 
                                     <div className="d-flex align-items-center mb-3">
@@ -232,16 +223,6 @@ export default function BookDetails() {
 
                                     <ListGroup variant="flush" className="mb-3">
                                         <ListGroup.Item>
-                                            <strong>Book Code:</strong>{" "}
-                                            {book.code || "N/A"}
-                                        </ListGroup.Item>
-                                        <ListGroup.Item>
-                                            <strong>Published:</strong>{" "}
-                                            {new Date(
-                                                book.creationDate
-                                            ).toLocaleDateString()}
-                                        </ListGroup.Item>
-                                        <ListGroup.Item>
                                             <strong>Available Quantity:</strong>{" "}
                                             {book.quantity}
                                         </ListGroup.Item>
@@ -260,7 +241,7 @@ export default function BookDetails() {
                                         >
                                             Add to Cart
                                         </Button>
-                                        <Button variant="outline-secondary">
+                                        <Button variant="secondary">
                                             Wishlist
                                         </Button>
 

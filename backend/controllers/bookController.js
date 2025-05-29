@@ -39,13 +39,22 @@ exports.getBooks = async (req, res, next) => {
         const search = req.query.search || "";
         const searchRegex = new RegExp(search, "i");
 
+        // Store filter
+        const storeCode = req.query.storeCode;
+
         // Sort
         const sortField = req.query.sortBy || "title";
         const sortOrder = req.query.sortOrder === "desc" ? -1 : 1;
 
+        // Build query
         const query = {
             $or: [{ title: searchRegex }, { description: searchRegex }],
         };
+
+        // Add store filter if provided
+        if (storeCode) {
+            query.storeCode = storeCode;
+        }
 
         const books = await BookModel.find(query)
             .sort({ [sortField]: sortOrder })
@@ -127,6 +136,15 @@ exports.deleteBook = async (req, res, next) => {
         }
 
         res.status(200).json({ message: "Book deleted successfully!" });
+    } catch (err) {
+        next(err);
+    }
+};
+
+exports.getStoreCodes = async (req, res, next) => {
+    try {
+        const storeCodes = await BookModel.distinct("storeCode");
+        res.status(200).json(storeCodes);
     } catch (err) {
         next(err);
     }
