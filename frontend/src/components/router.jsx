@@ -11,6 +11,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import BookDetails from "./BookDetails";
 import UpdateBook from "./user/UpdateBook";
 import AddBook from "./user/AddBook";
+import Wishlist from "./Wishlist";
 
 export const AppRouter = createBrowserRouter([
     {
@@ -37,6 +38,14 @@ export const AppRouter = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <UpdateBook />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: "/wishlist",
+                element: (
+                    <ProtectedRoute>
+                        <Wishlist />
                     </ProtectedRoute>
                 ),
             },

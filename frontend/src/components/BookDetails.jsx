@@ -21,11 +21,13 @@ import { useAuth } from "../context/AuthContext"; // Import your auth context
 export default function BookDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { user, token } = useAuth();
+    const { user, token, isAuthenticated } = useAuth();
     const [book, setBook] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [relatedBooks, setRelatedBooks] = useState([]);
+    const [isInWishlist, setIsInWishlist] = useState(false);
+    const [wishlistLoading, setWishlistLoading] = useState(false);
 
     useEffect(() => {
         const fetchBookDetails = async () => {
@@ -43,7 +45,7 @@ export default function BookDetails() {
                         params: {
                             storeCode: response.data.storeCode,
                             limit: 3,
-                            exclude: id, // Make sure your backend handles this
+                            exclude: id,
                         },
                     }
                 );
@@ -52,6 +54,19 @@ export default function BookDetails() {
                     (book) => book._id !== id
                 );
                 setRelatedBooks(filteredRelated);
+
+                // Check if book is in wishlist (if user is authenticated)
+                if (isAuthenticated) {
+                    const wishlistResponse = await axios.get(
+                        `http://localhost:8080/api/wishlist/check/${id}`,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                            },
+                        }
+                    );
+                    setIsInWishlist(wishlistResponse.data.isInWishlist);
+                }
             } catch (err) {
                 setError(
                     err.response?.data?.message ||
@@ -64,7 +79,49 @@ export default function BookDetails() {
         };
 
         fetchBookDetails();
-    }, [id]);
+    }, [id, isAuthenticated, token]);
+
+    const handleWishlist = async () => {
+        if (!isAuthenticated) {
+            toast.error("Please login to add to wishlist");
+            navigate("/login");
+            return;
+        }
+
+        try {
+            setWishlistLoading(true);
+            if (isInWishlist) {
+                await axios.delete(`http://localhost:8080/api/wishlist/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                setIsInWishlist(false);
+                toast.success("Book removed from wishlist");
+            } else {
+                await axios.post(
+                    `http://localhost:8080/api/wishlist/${id}`,
+                    {},
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                setIsInWishlist(true);
+                toast.success("Book added to wishlist");
+            }
+        } catch (err) {
+            console.error("Wishlist error:", err);
+            const errorMsg =
+                err.response?.data?.message ||
+                err.message ||
+                "Wishlist operation failed";
+            toast.error(errorMsg);
+        } finally {
+            setWishlistLoading(false);
+        }
+    };
 
     const handleEdit = () => {
         navigate(`/books/${id}/edit`);
@@ -241,8 +298,30 @@ export default function BookDetails() {
                                         >
                                             Add to Cart
                                         </Button>
-                                        <Button variant="secondary">
+                                        {/* <Button variant="secondary">
                                             Wishlist
+                                        </Button> */}
+                                        <Button
+                                            variant={
+                                                isInWishlist
+                                                    ? "success"
+                                                    : "secondary"
+                                            }
+                                            onClick={handleWishlist}
+                                            disabled={wishlistLoading}
+                                        >
+                                            {wishlistLoading ? (
+                                                <Spinner
+                                                    as="span"
+                                                    size="sm"
+                                                    animation="border"
+                                                    role="status"
+                                                />
+                                            ) : isInWishlist ? (
+                                                "Remove from Wishlist"
+                                            ) : (
+                                                "Add to Wishlist"
+                                            )}
                                         </Button>
 
                                         {isBookOwner && (

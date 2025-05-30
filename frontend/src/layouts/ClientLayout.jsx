@@ -84,7 +84,6 @@ export default function ClientLayout() {
                                 {/* User controls */}
                                 {isAuthenticated ? (
                                     <div className="d-flex align-items-center gap-3">
-                                        <i className="bi bi-bell-fill fs-5 text-muted"></i>
                                         <Nav>
                                             <NavDropdown
                                                 align="end"
@@ -101,6 +100,13 @@ export default function ClientLayout() {
                                                 }
                                                 id="user-dropdown"
                                             >
+                                                <NavDropdown.Item
+                                                    as={NavLink}
+                                                    to="/wishlist"
+                                                >
+                                                    <i className="bi bi-heart-fill me-2 text-danger"></i>
+                                                    My Wishlist
+                                                </NavDropdown.Item>
                                                 <NavDropdown.Item
                                                     as="button"
                                                     onClick={logOut}

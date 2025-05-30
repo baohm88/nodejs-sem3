@@ -22,6 +22,12 @@ const userSchema = new Scheme(
                 ref: "Book",
             },
         ],
+        wishlist: [
+            {
+                type: Scheme.Types.ObjectId,
+                ref: "Book",
+            },
+        ],
     },
     { timestamps: true }
 );

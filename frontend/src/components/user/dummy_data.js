@@ -1,14 +1,9 @@
 export const DASHBOARD_LINKS = [
-    // {
-    //     to: "/account/listings",
-    //     icon: "bi-ev-front",
-    //     text: "My Listings",
-    // },
-    // {
-    //     to: "/account/watch-list",
-    //     icon: "bi-heart",
-    //     text: "My Watch List",
-    // },
+    {
+        to: "/wishlist",
+        icon: "bi-heart-fill",
+        text: "My Wishlist",
+    },
 ];
 
 export const INITIAL_BOOK_FORM_VALUES = {
